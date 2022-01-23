@@ -52,7 +52,9 @@ func (p *Promtail) AllocToScrapeConfig(Alloc *api.Allocation) (*ScrapeConfig) {
       "nomad_alloc_id": Alloc.ID,
       "nomad_alloc_name": Alloc.Name,
       "nomad_node_id": p.Nomad.NodeID,
-      "__path__": fmt.Sprintf("%s/%s/alloc/logs/*.0", p.Nomad.AllocsDir, Alloc.ID),
+
+      // Log files have an integer suffix (e.g. example.stdout.0, example.stderr.123)
+      "__path__": fmt.Sprintf("%s/%s/alloc/logs/*.[0-9]*", p.Nomad.AllocsDir, Alloc.ID),
     },
   }
   return config

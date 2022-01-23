@@ -1,7 +1,7 @@
 - targets:
     - localhost
   labels:
-    __path__: /var/lib/nomad/alloc/38011cad-190e-0cf4-2e82-61f0d1aaa183/alloc/logs/*.0
+    __path__: /var/lib/nomad/alloc/38011cad-190e-0cf4-2e82-61f0d1aaa183/alloc/logs/*.[0-9]*
     nomad_alloc_id: 38011cad-190e-0cf4-2e82-61f0d1aaa183
     nomad_alloc_name: logging.nomad-logger[0]
     nomad_group: nomad-logger
@@ -10,7 +10,7 @@
 - targets:
     - localhost
   labels:
-    __path__: /var/lib/nomad/alloc/7fb90c18-0f41-6b33-977a-a4cc8f5b3e8a/alloc/logs/*.0
+    __path__: /var/lib/nomad/alloc/7fb90c18-0f41-6b33-977a-a4cc8f5b3e8a/alloc/logs/*.[0-9]*
     nomad_alloc_id: 7fb90c18-0f41-6b33-977a-a4cc8f5b3e8a
     nomad_alloc_name: logging.promtail[0]
     nomad_group: promtail

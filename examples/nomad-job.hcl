@@ -15,14 +15,14 @@ job "logging" {
       driver = "podman"
 
       config {
-        image = "registry.example.com/nomad/logging/nomad-logger"
+        image = "ghcr.io/dmaes/nomad-logger:latest"
         volumes = [
           "/var/lib/nomad/volumes/logging/promtail:/var/lib/promtail",
         ]
       }
 
       env {
-        NOMAD_ADDRESS = "http://nomad.service.somedc.consul:4646"
+        NOMAD_ADDR = "http://nomad.service.somedc.consul:4646"
         PROMTAIL_TARGETS_FILE = "/var/lib/promtail/nomad.yaml"
       }
 

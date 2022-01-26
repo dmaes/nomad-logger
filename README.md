@@ -12,7 +12,7 @@ Usage: nomad-logger [--nomad-address NOMAD-ADDRESS] [--nomad-allocs-dir NOMAD-AL
 
 Options:
   --nomad-address NOMAD-ADDRESS
-                         The address of the Nomad API [default: http://localhost:4646, env: NOMAD_ADDRESS]
+                         The address of the Nomad API [default: http://localhost:4646, env: NOMAD_ADDR]
   --nomad-allocs-dir NOMAD-ALLOCS-DIR
                          The location of the Nomad allocations data. Used to set the path to the logfiles [default: /var/lib/nomad/alloc, env: NOMAD_ALLOCS_DIR]
   --nomad-node-id NOMAD-NODE-ID

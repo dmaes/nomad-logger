@@ -59,8 +59,7 @@ func (f *Fluentbit) AllocToConfig(Alloc *api.Allocation) (string) {
   add nomad_group %s
   add nomad_alloc_id %s
   add nomad_alloc_name %s
-  add nomad_node_id %s
-`, tag, path, tag, Alloc.Namespace, Alloc.JobID, Alloc.TaskGroup, Alloc.ID, Alloc.Name, f.Nomad.NodeID)
+`, tag, path, tag, Alloc.Namespace, Alloc.JobID, Alloc.TaskGroup, Alloc.ID, Alloc.Name)
 
   return config
 }

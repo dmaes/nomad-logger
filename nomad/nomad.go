@@ -2,16 +2,19 @@ package nomad
 
 import (
 	"errors"
+	"fmt"
 	"log"
 	"os"
+	"regexp"
 
 	"github.com/hashicorp/nomad/api"
 )
 
 type Nomad struct {
-	Address   string
-	AllocsDir string
-	NodeID    string
+	Address    string
+	AllocsDir  string
+	NodeID     string
+	MetaPrefix string
 }
 
 func (n *Nomad) Client() *api.Client {
@@ -40,6 +43,32 @@ func (n *Nomad) Allocs() []*api.Allocation {
 		panic(err)
 	}
 	return allocs
+}
+
+func (n *Nomad) TaskMeta(Task api.Task) map[string]string {
+	meta := make(map[string]string)
+
+	regex, _ := regexp.Compile(fmt.Sprintf("^(%s)\\.", n.MetaPrefix))
+	for key, value := range Task.Meta {
+		if regex.MatchString(key) {
+			strippedKey := regex.ReplaceAllString(key, "")
+			meta[strippedKey] = value
+		}
+	}
+
+	return meta
+}
+
+func (n *Nomad) TaskMetaGet(Task api.Task, Key string, Default string) string {
+	meta := n.TaskMeta(Task)
+
+	value, exists := meta[Key]
+
+	if exists {
+		return value
+	}
+
+	return Default
 }
 
 func AllocTasks(Alloc *api.Allocation) ([]*api.Task, error) {

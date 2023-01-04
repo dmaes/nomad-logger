@@ -14,6 +14,7 @@ var args struct {
 	NomadAddress        string `arg:"--nomad-addr,env:NOMAD_ADDR" default:"http://localhost:4646" help:"The address of the Nomad API"`
 	NomadAllocsDir      string `arg:"--nomad-allocs-dir,env:NOMAD_ALLOCS_DIR" default:"/var/lib/nomad/alloc" help:"The location of the Nomad allocations data. Used to set the path to the logfiles"`
 	NomadNodeID         string `arg:"--nomad-node-id,env:NOMAD_NODE_ID" default:"" help:"The ID of the Nomad node to collect logs for. If empty, we'll suppose this also runs in as a nomad job, and the available env vars will be used to determine the Node ID"`
+	NomadMetaPrefix     string `arg:"--nomad-meta-prefix,env:NOMAD_META_PREFIX" default:"nomad-logger" help:"Consider meta keys that start with '$prefix.'. See log shippers for more info on meta usage."`
 	ReloadCmd           string `arg:"--reload-cmd,env:RELOAD_CMD" default:"" help:"Optional command to execute after logshipper config has changed. Usefull to signal a service to reload it's config. Valid for fluentbit logshipper."`
 	LogShipper          string `arg:"--log-shipper,env:LOG_SHIPPER" default:"promtail" help:"The logshipper to use. Options: fluentbit, promtail"`
 	FluentbitConfFile   string `arg:"--fluentbit-conf-file,env:FLUENTBIT_CONF_FILE" default:"/etc/fluent-bit/nomad.conf" help:"The file in which we can write our input's and stuff. Will be completely overwritten, should be '@INCLUDE'ed from main config file."`
@@ -26,8 +27,9 @@ func main() {
 	arg.MustParse(&args)
 
 	nomad := &nomad.Nomad{
-		Address:   args.NomadAddress,
-		AllocsDir: args.NomadAllocsDir,
+		Address:    args.NomadAddress,
+		AllocsDir:  args.NomadAllocsDir,
+		MetaPrefix: args.NomadMetaPrefix,
 	}
 
 	if args.NomadNodeID != "" {

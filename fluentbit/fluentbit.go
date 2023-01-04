@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"fmt"
 	"log"
+	"strings"
 	"text/template"
 	"time"
 
@@ -62,13 +63,32 @@ func (f *Fluentbit) AllocToConfig(Alloc *api.Allocation) string {
 }
 
 func (f *Fluentbit) AllocTaskStreamToConfig(Alloc *api.Allocation, Task *api.Task, Stream string) string {
-	tag := fmt.Sprintf("%s.%s.%s.%s", f.TagPrefix, Alloc.ID, Task.Name, Stream)
+	tagPrefix := f.Nomad.TaskMetaGet(*Task, "fluentbit.tag-prefix", f.TagPrefix)
+	tag := fmt.Sprintf("%s.%s.%s.%s", tagPrefix, Alloc.ID, Task.Name, Stream)
+
 	path := fmt.Sprintf("%s/%s/alloc/logs/%s.%s.[0-9]*", f.Nomad.AllocsDir, Alloc.ID, Task.Name, Stream)
+
+	parser := f.Nomad.TaskMetaGet(*Task, "fluentbit.parser", f.Parser)
+
+	filterParsersStr := f.Nomad.TaskMetaGet(*Task, "fluentbit.filter-parsers", "")
+	filterParsers := make([]*FluentbitFilterParser, 0)
+	if filterParsersStr != "" {
+		for _, fp := range strings.Split(filterParsersStr, ",") {
+			if fp != "" {
+				fpSplit := strings.Split(fp, ":")
+				filterParsers = append(filterParsers, &FluentbitFilterParser{
+					Key:    fpSplit[0],
+					Parser: fpSplit[1],
+				})
+			}
+		}
+	}
 
 	fluentbitConfig := &FluentbitConfig{
 		Tag:            tag,
 		Path:           path,
-		Parser:         f.Parser,
+		Parser:         parser,
+		FilterParsers:  filterParsers,
 		NomadNamespace: Alloc.Namespace,
 		NomadJob:       Alloc.JobID,
 		NomadTaskGroup: Alloc.TaskGroup,
@@ -93,6 +113,7 @@ type FluentbitConfig struct {
 	Tag            string
 	Path           string
 	Parser         string
+	FilterParsers  []*FluentbitFilterParser
 	NomadNamespace string
 	NomadJob       string
 	NomadTaskGroup string
@@ -101,4 +122,9 @@ type FluentbitConfig struct {
 	NomadAllocName string
 	NomadNodeID    string
 	NomadLogStream string
+}
+
+type FluentbitFilterParser struct {
+	Key    string
+	Parser string
 }

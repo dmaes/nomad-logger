@@ -18,3 +18,14 @@
   add nomad_alloc_name {{ .NomadAllocName }}
   add nomad_node_id {{ .NomadNodeID }}
   add nomad_log_stream {{ .NomadLogStream }}
+
+{{- range .FilterParsers }}
+
+[FILTER]
+  name parser
+  match {{ $.Tag }}
+  key_name {{ .Key }}
+  parser {{ .Parser }}
+  preserve_key true
+  reserve_data true
+{{- end }}

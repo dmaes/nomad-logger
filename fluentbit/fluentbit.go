@@ -1,22 +1,30 @@
 package fluentbit
 
 import (
+	"bytes"
 	"fmt"
 	"log"
+	"text/template"
 	"time"
 
 	"github.com/dmaes/nomad-logger/nomad"
 	"github.com/dmaes/nomad-logger/util"
 
 	"github.com/hashicorp/nomad/api"
+
+	_ "embed"
 )
 
 type Fluentbit struct {
 	Nomad     *nomad.Nomad
 	ConfFile  string
 	TagPrefix string
+	Parser    string
 	ReloadCmd string
 }
+
+//go:embed fluentbit-conf.gotmpl
+var FluentbitConfTmpl string
 
 func (f *Fluentbit) Run() {
 	log.Println("Starting nomad-logger for Fluentbit")
@@ -57,23 +65,40 @@ func (f *Fluentbit) AllocTaskStreamToConfig(Alloc *api.Allocation, Task *api.Tas
 	tag := fmt.Sprintf("%s.%s.%s.%s", f.TagPrefix, Alloc.ID, Task.Name, Stream)
 	path := fmt.Sprintf("%s/%s/alloc/logs/%s.%s.[0-9]*", f.Nomad.AllocsDir, Alloc.ID, Task.Name, Stream)
 
-	config := fmt.Sprintf(`
-[INPUT]
-  name tail
-  tag %s
-  path %s
-[FILTER]
-  name modify
-  match %s
-  add nomad_namespace %s
-  add nomad_job %s
-  add nomad_task_group %s
-  add nomad_task %s
-  add nomad_alloc_id %s
-  add nomad_alloc_name %s
-  add nomad_node_id %s
-  add nomad_log_stream %s
-  `, tag, path, tag, Alloc.Namespace, Alloc.JobID, Alloc.TaskGroup, Task.Name, Alloc.ID, Alloc.Name, f.Nomad.NodeID, Stream)
+	fluentbitConfig := &FluentbitConfig{
+		Tag:            tag,
+		Path:           path,
+		Parser:         f.Parser,
+		NomadNamespace: Alloc.Namespace,
+		NomadJob:       Alloc.JobID,
+		NomadTaskGroup: Alloc.TaskGroup,
+		NomadTask:      Task.Name,
+		NomadAllocID:   Alloc.ID,
+		NomadAllocName: Alloc.Name,
+		NomadNodeID:    f.Nomad.NodeID,
+		NomadLogStream: Stream,
+	}
 
-	return config
+	tpl := template.Must(template.New("fluentbit-conf").Parse(FluentbitConfTmpl))
+	var tplBuffer bytes.Buffer
+	err := tpl.Execute(&tplBuffer, fluentbitConfig)
+	if err != nil {
+		panic(err)
+	}
+
+	return tplBuffer.String()
+}
+
+type FluentbitConfig struct {
+	Tag            string
+	Path           string
+	Parser         string
+	NomadNamespace string
+	NomadJob       string
+	NomadTaskGroup string
+	NomadTask      string
+	NomadAllocID   string
+	NomadAllocName string
+	NomadNodeID    string
+	NomadLogStream string
 }

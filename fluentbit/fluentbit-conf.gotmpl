@@ -1,0 +1,20 @@
+
+[INPUT]
+  name tail
+  tag {{ .Tag }}
+  path {{ .Path }}
+{{- if .Parser }}
+  parser {{ .Parser }}
+{{- end }}
+
+[FILTER]
+  name modify
+  match {{ .Tag }}
+  add nomad_namespace {{ .NomadNamespace }}
+  add nomad_job {{ .NomadJob }}
+  add nomad_task_group {{ .NomadTaskGroup }}
+  add nomad_task {{ .NomadTask }}
+  add nomad_alloc_id {{ .NomadAllocID }}
+  add nomad_alloc_name {{ .NomadAllocName }}
+  add nomad_node_id {{ .NomadNodeID }}
+  add nomad_log_stream {{ .NomadLogStream }}

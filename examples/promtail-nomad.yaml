@@ -1,19 +1,48 @@
 - targets:
     - localhost
   labels:
-    __path__: /var/lib/nomad/alloc/38011cad-190e-0cf4-2e82-61f0d1aaa183/alloc/logs/*.[0-9]*
-    nomad_alloc_id: 38011cad-190e-0cf4-2e82-61f0d1aaa183
+    __path__: /var/lib/nomad/alloc/f0d28603-cc92-21e0-7b87-51a6a0b8a8fe/alloc/logs/nomad-logger.stdout.[0-9]*
+    nomad_alloc_id: f0d28603-cc92-21e0-7b87-51a6a0b8a8fe
     nomad_alloc_name: logging.nomad-logger[0]
-    nomad_group: nomad-logger
     nomad_job: logging
+    nomad_log_stream: stdout
     nomad_namespace: default
+    nomad_node_id: 3587d476-0fea-17b4-cbc6-bdfef252127a
+    nomad_task: nomad-logger
+    nomad_task_group: nomad-logger
 - targets:
     - localhost
   labels:
-    __path__: /var/lib/nomad/alloc/7fb90c18-0f41-6b33-977a-a4cc8f5b3e8a/alloc/logs/*.[0-9]*
-    nomad_alloc_id: 7fb90c18-0f41-6b33-977a-a4cc8f5b3e8a
-    nomad_alloc_name: logging.promtail[0]
-    nomad_group: promtail
+    __path__: /var/lib/nomad/alloc/f0d28603-cc92-21e0-7b87-51a6a0b8a8fe/alloc/logs/nomad-logger.stderr.[0-9]*
+    nomad_alloc_id: f0d28603-cc92-21e0-7b87-51a6a0b8a8fe
+    nomad_alloc_name: logging.nomad-logger[0]
     nomad_job: logging
+    nomad_log_stream: stderr
     nomad_namespace: default
-
+    nomad_node_id: 3587d476-0fea-17b4-cbc6-bdfef252127a
+    nomad_task: nomad-logger
+    nomad_task_group: nomad-logger
+- targets:
+    - localhost
+  labels:
+    __path__: /var/lib/nomad/alloc/8e0fa98c-852f-dedb-2d6b-a14a1a76ef89/alloc/logs/promtail.stdout.[0-9]*
+    nomad_alloc_id: 8e0fa98c-852f-dedb-2d6b-a14a1a76ef89
+    nomad_alloc_name: logging.promtail[0]
+    nomad_job: logging
+    nomad_log_stream: stdout
+    nomad_namespace: default
+    nomad_node_id: 3587d476-0fea-17b4-cbc6-bdfef252127a
+    nomad_task: promtail
+    nomad_task_group: promtail
+- targets:
+    - localhost
+  labels:
+    __path__: /var/lib/nomad/alloc/8e0fa98c-852f-dedb-2d6b-a14a1a76ef89/alloc/logs/promtail.stderr.[0-9]*
+    nomad_alloc_id: 8e0fa98c-852f-dedb-2d6b-a14a1a76ef89
+    nomad_alloc_name: logging.promtail[0]
+    nomad_job: logging
+    nomad_log_stream: stderr
+    nomad_namespace: default
+    nomad_node_id: 3587d476-0fea-17b4-cbc6-bdfef252127a
+    nomad_task: promtail
+    nomad_task_group: promtail

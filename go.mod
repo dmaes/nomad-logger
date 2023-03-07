@@ -5,7 +5,7 @@ go 1.19
 
 require (
 	github.com/alexflint/go-arg v1.4.3
-	github.com/hashicorp/nomad/api v0.0.0-20230306204101-605f15506b1b
+	github.com/hashicorp/nomad/api v0.0.0-20230307205226-5d5740b5339c
 	gopkg.in/yaml.v3 v3.0.1
 )
 

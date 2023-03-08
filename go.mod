@@ -5,9 +5,11 @@ go 1.19
 
 require (
 	github.com/alexflint/go-arg v1.4.3
-	github.com/hashicorp/nomad/api v0.0.0-20230306204101-605f15506b1b
+	github.com/hashicorp/nomad v1.5.0
 	gopkg.in/yaml.v3 v3.0.1
 )
+
+require github.com/hashicorp/nomad/api v0.0.0-20221006174558-2aa7e66bdb52
 
 require (
 	github.com/alexflint/go-scalar v1.1.0 // indirect

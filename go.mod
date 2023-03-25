@@ -5,7 +5,7 @@ go 1.19
 
 require (
 	github.com/alexflint/go-arg v1.4.3
-	github.com/hashicorp/nomad v1.5.0
+	github.com/hashicorp/nomad v1.5.2
 	gopkg.in/yaml.v3 v3.0.1
 )
 
@@ -15,7 +15,7 @@ require (
 	github.com/alexflint/go-scalar v1.1.0 // indirect
 	github.com/gorilla/websocket v1.5.0 // indirect
 	github.com/hashicorp/cronexpr v1.1.1 // indirect
-	github.com/hashicorp/errwrap v1.0.0 // indirect
+	github.com/hashicorp/errwrap v1.1.0 // indirect
 	github.com/hashicorp/go-cleanhttp v0.5.2 // indirect
 	github.com/hashicorp/go-multierror v1.1.1 // indirect
 	github.com/hashicorp/go-rootcerts v1.0.2 // indirect

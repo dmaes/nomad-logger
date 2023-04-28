@@ -5,6 +5,6 @@ WORKDIR $APP_ROOT
 
 COPY . $APP_ROOT
 
-RUN go build
+RUN go build -o nomad-logger
 
 CMD ["/srv/nomad-logger"]

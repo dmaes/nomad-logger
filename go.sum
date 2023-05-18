@@ -21,6 +21,8 @@ github.com/hashicorp/nomad v1.5.0 h1:BtmkUUApRYmN8GNznLIQ/apRYw2C/bdzH6rhWZ3STu4
 github.com/hashicorp/nomad v1.5.0/go.mod h1:88Swya6NDLoQPnBYFW4T/KPAwc8z5yJ47WgQ+60XAH8=
 github.com/hashicorp/nomad v1.5.2 h1:4dHbKF2UZEYXoXPUfG1VdSDaOaGpuqZUiCnuKuna83o=
 github.com/hashicorp/nomad v1.5.2/go.mod h1:ywYvhApBI9mRlmS8qMhoaWUbzeVGiJHKMjwy8l7fHRY=
+github.com/hashicorp/nomad v1.5.5 h1:TXupPGIG5VKdBSPGqPvBuSXpyFBaBz77CQ6xpZmFaiM=
+github.com/hashicorp/nomad v1.5.5/go.mod h1:88ebyMnwBv3cWtxUNjevCB/LNccQZQWS/lWVJsntYMc=
 github.com/hashicorp/nomad/api v0.0.0-20221006174558-2aa7e66bdb52 h1:O7oUpvlilRu3CWMiQtQF/pkF6ZUSWmjD0sn+T8oqewo=
 github.com/hashicorp/nomad/api v0.0.0-20221006174558-2aa7e66bdb52/go.mod h1:1dS8jZqAXhEreBcb26wpaV4Llk2cLO2sucuDKI+oTIs=
 github.com/mitchellh/go-homedir v1.1.0 h1:lukF9ziXFxDFPkA1vsr5zpc1XuPDn/wFntq5mG+4E0Y=

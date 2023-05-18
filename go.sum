@@ -21,6 +21,8 @@ github.com/hashicorp/go-rootcerts v1.0.2 h1:jzhAVGtqPKbwpyCPELlgNWhE1znq+qwJtW5O
 github.com/hashicorp/go-rootcerts v1.0.2/go.mod h1:pqUvnprVnM5bf7AOirdbb01K4ccR319Vf4pU3K5EGc8=
 github.com/hashicorp/nomad/api v0.0.0-20230518180656-e80945f37d74 h1:z+dftKyd8Gh9JU1gQkieAP/NSdKtDQV6ZGVZ7Do1W3E=
 github.com/hashicorp/nomad/api v0.0.0-20230518180656-e80945f37d74/go.mod h1:rb38DqjaaIfhJRiLeCAGgIt+wV7o78rB+liyFE3mVzE=
+github.com/hashicorp/nomad/api v0.0.0-20230518213834-d9027a7238aa h1:LT2VON6JOIPW5kLvGR9Cychmd4ZdD0jY404vXy3Pkjg=
+github.com/hashicorp/nomad/api v0.0.0-20230518213834-d9027a7238aa/go.mod h1:rb38DqjaaIfhJRiLeCAGgIt+wV7o78rB+liyFE3mVzE=
 github.com/mitchellh/go-homedir v1.1.0 h1:lukF9ziXFxDFPkA1vsr5zpc1XuPDn/wFntq5mG+4E0Y=
 github.com/mitchellh/go-homedir v1.1.0/go.mod h1:SfyaCUpYCn1Vlf4IUYiD9fPX4A5wJrkLzIz1N1q0pr0=
 github.com/mitchellh/go-testing-interface v1.14.2-0.20210821155943-2d9075ca8770 h1:drhDO54gdT/a15GBcMRmunZiNcLgPiFIJa23KzmcvcU=

@@ -19,6 +19,8 @@ github.com/hashicorp/go-multierror v1.1.1 h1:H5DkEtf6CXdFp0N0Em5UCwQpXMWke8IA0+l
 github.com/hashicorp/go-multierror v1.1.1/go.mod h1:iw975J/qwKPdAO1clOe2L8331t/9/fmwbPZ6JB6eMoM=
 github.com/hashicorp/go-rootcerts v1.0.2 h1:jzhAVGtqPKbwpyCPELlgNWhE1znq+qwJtW5Oi2viEzc=
 github.com/hashicorp/go-rootcerts v1.0.2/go.mod h1:pqUvnprVnM5bf7AOirdbb01K4ccR319Vf4pU3K5EGc8=
+github.com/hashicorp/nomad/api v0.0.0-20230505125014-3d63bc62b35c h1:dDshhHK6X0m7M/tvdbn2x0KR9wf/fdfd2J4i1qbQZDI=
+github.com/hashicorp/nomad/api v0.0.0-20230505125014-3d63bc62b35c/go.mod h1:2TCrNvonL09r7EiQ6M2rNt+Cmjbn1QbzchFoTWJFpj4=
 github.com/hashicorp/nomad/api v0.0.0-20230518180656-e80945f37d74 h1:z+dftKyd8Gh9JU1gQkieAP/NSdKtDQV6ZGVZ7Do1W3E=
 github.com/hashicorp/nomad/api v0.0.0-20230518180656-e80945f37d74/go.mod h1:rb38DqjaaIfhJRiLeCAGgIt+wV7o78rB+liyFE3mVzE=
 github.com/mitchellh/go-homedir v1.1.0 h1:lukF9ziXFxDFPkA1vsr5zpc1XuPDn/wFntq5mG+4E0Y=

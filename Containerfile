@@ -1,4 +1,4 @@
-FROM golang:1.20
+FROM golang:1.22
 
 ENV APP_ROOT /srv
 WORKDIR $APP_ROOT

@@ -1,5 +1,7 @@
 # Nomad Logger
 
+***Since Hashicorp's switch to BSL, I stopped using Nomad and am thus no longer maintaining this project***
+
 This is a simple Go application that polls the [Nomad](https://www.nomadproject.io/) API for all allocations on a certain host,
 and then updates the config of you log shipper of choice.
 
